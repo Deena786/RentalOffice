@@ -1,0 +1,31 @@
+﻿@model IEnumerable<RentalOffice.Model.ProductViewModel>
+
+@{
+    ViewBag.Title = "Our catalog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<hr />
+<h2 class="sub-header">Список фильмов</h2>
+@foreach (var product in Model)
+{
+   // var image = product.Image.ToString();
+    var image = product.Image.ToString();
+<div class="row">   
+    <div class="col-lg-2  col-sm-2 col-md-2 panel panel-default">        
+        <img src="@image" class="img-responsive" alt="Generic placeholder thumbnail">
+    </div>
+    <div class="col-lg-10  col-sm-10 col-md-10 panel panel-default">
+        <h4>@product.Name</h4>
+        <p>@product.Category</p>
+        <p>@product.Made</p>
+        <p>Режисер: @product.Producer</p>
+        <p>В ролях: @product.FilmStars</p>
+        <p>@product.Description</p>        
+        @Html.ActionLink(">Заказать >>", "Register", "Account", "", new { @class = "btn btn-info" })
+    </div>
+</div>
+}
+
+
+

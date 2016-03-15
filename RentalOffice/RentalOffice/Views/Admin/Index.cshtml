@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";    
+}
+<link rel="stylesheet" type="text/css" href="../Content/Сonverter.css">
+<h1 class="page-header">Рабочий стол</h1>
+
+<div class="row placeholders">
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="/Image/chat.jpg" class="img-responsive" alt="Generic placeholder thumbnail">
+        <a href="#" class="btn btn-info" role="button">  Перейти  </a>
+        
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="/Image/support.jpg" class="img-responsive" alt="Generic placeholder thumbnail">
+        <a href="#" class="btn btn-info" role="button">  Перейти  </a>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="/Image/question.jpg" class="img-responsive" alt="Generic placeholder thumbnail">
+        <a href="#" class="btn btn-info" role="button">  Перейти  </a>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <div id="IUAfinance42">
+            <div class="content">
+                <h1><span><a href="http://finance.i.ua/bank/10/" id="IUAfinance42TitleLink">Курсы валют</a></span><i></i></h1>
+                <dl id="IUAfinance42Embed"></dl>
+                <a href="http://finance.i.ua/">Курсы доллара, евро и рубля по банкам</a>
+            </div>
+        </div>
+    </div>
+</div> 
+<script type="text/javascript">
+    if (typeof (iFinance) == "undefined") {
+        if (typeof (iFinanceData) == "undefined") {
+            document.write('<scr' + 'ipt src="http://i.i.ua/js/i/finance_informer.js?1" type="text/javascript" charset = "windows-1251"></scr' + 'ipt>');
+            iFinanceData = [];
+        }
+        iFinanceData.push({ b: 10, c: [840, 978, 643], enc: 0, lang: 0, p: '42' });
+    } else {
+        window['oiFinance42'] = new iFinance();
+        window['oiFinance42'].gogo({ b: 10, c: [840, 978, 643], enc: 0, lang: 0, p: '42' });
+    }
+</script>

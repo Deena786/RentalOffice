@@ -1,0 +1,149 @@
+﻿@model RentalOffice.Model.ProductViewModel
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<hr />
+<header class="container">
+    <h3>Внести изменения</h3>
+</header>
+<div class="container">
+    @using (Html.BeginForm("Update", "Product", FormMethod.Post, new { @class = "form-horisontan", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ProductId)
+        <fieldset>
+            <legend>Информация о продукте:</legend>
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Name, "", new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Price, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Price, "", new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Pledge, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Pledge, "", new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.Pledge, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Category, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.Category, new SelectList(
+                          new List<Object>{
+                               new { value = "Мультипликация" , text = "Мультипликация"  },
+                               new { value = "Боевик" , text = "Боевик" },
+                               new { value = "Детектив" , text = "Детектив"},
+                               new { value = "Приключенческий" , text = "Приключенческий"},
+                               new { value = "Фильм ужасов" , text = "Фильм ужасов"},
+                               new { value = "Комедия" , text = "Комедия"},
+                               new { value = "Драмма" , text = "Драмма"},
+                               new { value = "Фантастика" , text = "Фантастика"},
+                               new { value = "Мистика" , text = "Мистика"},
+                               new { value = "Фентези" , text = "Фентези"},
+                               new { value = "Биографический" , text = "Биографический"},
+                               new { value = "Исторический" , text = "Исторический"},
+                               new { value = "Семейный" , text = "Семейный"},
+                               new { value = "Сказка" , text = "Сказка"},
+                               new { value = "Документальный" , text = "Документальный"},
+                               new { value = "Эротика" , text = "Эротика"}
+                            },
+                          "value",
+                          "text",
+                           2))
+
+                        @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Released, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Released, "", new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.Released, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Made, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Made, "", new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.Made, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Producer, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Producer, "", new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.Producer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FilmStars, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.FilmStars, "", new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.FilmStars, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Quality, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Quality, "", new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.Quality, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-block btn-success">Изменить</button>
+            </div>
+        </div>
+    }
+</div>

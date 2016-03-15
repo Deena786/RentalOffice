@@ -1,0 +1,73 @@
+﻿@model IEnumerable<RentalOffice.Model.OrderViewModel>
+
+@{
+    ViewBag.Title = "UserOrders";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+    decimal sum = 0;
+}
+
+
+<h2>Личный кабинет</h2>
+<div class="row">
+    <h2 class="sub-header">Список всех моих заказов</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>                    
+                    <th>Дата заказа</th>
+                    <th>Фильмы</th>                    
+                    <th>Дата доставки</th>                    
+                    <th>Дата возврата</th>
+                    <th>Стоимость</th>
+                    <th>Отметка о выполнении</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>
+                            @order.OrderDate.ToShortDateString()
+                        </td>
+                        <td>
+                            <ul>
+                                @foreach (var oi in order.OrderItems)
+                                {
+                                    <li>@oi.ProductName</li>                                   
+                                }                                
+                            </ul>
+                                  
+                        </td>
+                           
+                        <td>
+                            @order.DeliveryDate.ToShortDateString()
+                        </td>                       
+                        <td>
+                            @order.ReturnDate.ToShortDateString()
+                        </td>
+                        
+                        <td>
+                            @foreach (var oi in order.OrderItems)
+                            {
+                                @(sum += oi.Pledge + oi.Price)
+                            }
+                        </td>
+                        <td>
+                            @if (!order.Execution)
+                            { <span>Выполнен</span> }
+                            else
+                            {<span>Не выполнен</span> }
+
+                               
+                             
+                           
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,95 @@
+﻿@model RentalOffice.Model.UserViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<header class="container">
+    <h1 class="text-center">Регистрационная форма</h1>
+</header>
+<section class="container">
+    @using (Html.BeginForm("Create", "User", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <hr />
+        <fieldset>
+            <legend class="col-sm-12">Информация для регистрации</legend>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Name, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Name, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })                        
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Surname, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Surname, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })                        
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Login, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Login, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Login, "", new { @class = "text-danger" })
+                    </div>                    
+                </div>
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>                   
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Password, "", new { @class = "form-control", @type = "password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>                    
+                </div>              
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Phone, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Phone, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                    </div>                    
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Role, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Role, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })
+                    </div>                    
+                </div>
+                </div>
+        </fieldset>        
+        <div class="form-group">
+            <div class="col-sm-12">
+                <h3>Как Вы узнали о нас?</h3>
+                <select class="form-control" id="about">
+                    <option value="_none">Выбирите пожалуйста</option>
+                    <option value="value1">Интернет</option>
+                    <option value="value2">Друзья</option>
+                    <option value="value3">Газета</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary btn-lg center-block" type="submit">Регистрация</button>
+
+    }
+</section>
+
+

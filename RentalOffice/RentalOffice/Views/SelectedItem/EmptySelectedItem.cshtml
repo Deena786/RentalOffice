@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "EmptySelectedItem";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+<h2>Ваша карзина пуста</h2>
+
+<br />
+
+<div>
+    @Html.ActionLink("Перейти в каталог", "ListForUser", "Product", null, new { @class = "btn btn-primary" })
+</div>
+   

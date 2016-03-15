@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "_Layout_Admin";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">    
+    <meta name="viewport" content="width=device-width, >   
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../Content/Сonverter.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <title>@ViewBag.Title</title>
+        
+        <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="dashboard.css" rel="stylesheet">        
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src=" ..\Image\logo.jpg" class="img-rounded" width="150" height="40" /></a>
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Главная страница", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Выйти", "Logout", "Account")</li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </div>    
+    <h2>llllllllllllllllllllllllllllllllllll</h2>    
+    <div id="admin" class="container-fluid">        
+        <div class="row">           
+            <div class="col-sm-3 col-md-2 sidebar">                                                       
+                <ul id="nav" class="nav nav-pills nav-stacked">
+                    <li class="active">
+                        @Html.ActionLink("Рабочий стол", "Index", "Admin")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Каталог", "List", "Product")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Клиенты", "List", "User")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Заказы", "ListTodey", "Order")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Доставка", "Delivery", "Admin")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Администрация", "Administration", "Admin")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Касса", "Cashbox", "Admin")
+                    </li>
+                </ul>                
+            </div>
+            <div class="col-sm-9  col-md-10  ">                
+                    <div class="col-sm-12  col-md-12  main">
+                        @RenderBody()
+                    </div>
+                </div>     
+
+            </div>
+    </div>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
+    <script type="text/javascript">
+        if (typeof (iFinance) == "undefined") {
+            if (typeof (iFinanceData) == "undefined") {
+                document.write('<scr' + 'ipt src="http://i.i.ua/js/i/finance_informer.js?1" type="text/javascript" charset = "windows-1251"></scr' + 'ipt>');
+                iFinanceData = [];
+            }
+            iFinanceData.push({ b: 10, c: [840, 978, 643], enc: 0, lang: 0, p: '42' });
+        } else {
+            window['oiFinance42'] = new iFinance();
+            window['oiFinance42'].gogo({ b: 10, c: [840, 978, 643], enc: 0, lang: 0, p: '42' });
+        }
+    </script>
+</body>
+</html>

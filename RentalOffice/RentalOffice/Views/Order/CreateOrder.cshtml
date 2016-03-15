@@ -1,0 +1,135 @@
+﻿@model RentalOffice.Model.OrderChangeViewModel
+
+@{
+    ViewBag.Title = "CreateOrder";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+
+<header class="container">
+    <h3>Новый заказ</h3>
+</header>
+<div class="container">
+    @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { @class = "form-horisontan", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <fieldset>
+            <legend>Информация о заказе:</legend>
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.User, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(m => m.User, Model.User.Select(u => new SelectListItem() { Text = u.Surname, Value = u.UserId.ToString() }), new { Multiple = "multiple" })
+                        @Html.ValidationMessageFor(m => m.User, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Products, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                       @* @Html.DropDownListFor(m => m.Products, Model.Products.Select(p => new SelectListItem() { Text = p.Name, Value = p.ProductId.ToString(), Selected = true}), new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.Products, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.OrderDate,   new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.OrderDate, "", new { @class = "form-control ", @type = "date" })                      
+                        @Html.ValidationMessageFor(m => m.OrderDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DeliveryDate, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.DeliveryDate, "", new { @class = "form-control ", @type = "date" })
+                        @Html.ValidationMessageFor(m => m.DeliveryDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <fieldset>
+                <legend>Адрес</legend>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="city" placeholder="Город" required>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="zip" placeholder="Индекс">
+                    </div>
+                    <br />
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-5">
+                        @* @Html.DropDownListFor(m => m.)*@
+                        <select class="form-control" id="state" name="state">
+                            <option value="_none">Область</option>
+                            <option value="value1">Винницкая</option>
+                            <option value="value2">Днепропетровская</option>
+                            <option value="value3">Донецкая</option>
+                            <option value="value4">Житомирская</option>
+                            <option value="value5">Закарпатская</option>
+                            <option value="value6">Запорожская</option>
+                            <option value="value7">Ивано-Франковская</option>
+                            <option value="value8">Киевская</option>
+                            <option value="value9">Кировоградская</option>
+                            <option value="value10">Луганская</option>
+                            <option value="value11">Львовская</option>
+                            <option value="value12">Николаевская</option>
+                            <option value="value13">Одесская</option>
+                            <option value="value14">Полтавская</option>
+                            <option value="value15">Ровенская</option>
+                            <option value="value16">Сумская</option>
+                            <option value="value17">Тернопольская</option>
+                            <option value="value18">Харьковская</option>
+                            <option value="value19">Херсонская</option>
+                            <option value="value20">Хмельницкая</option>
+                            <option value="value21">Черкасская</option>
+                            <option value="value22">Черниговская</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="street" placeholder="Улица">
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="building" placeholder="Дом">
+                    </div>
+                </div>
+            </fieldset>
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ReturnDate, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.ReturnDate, "", new { @class = "form-control ", @type = "date" })
+                        @Html.ValidationMessageFor(m => m.ReturnDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Payment, new { @class = "control-label col-sm-2" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.Payment, "", new { @class = "form-control " })
+                        @Html.ValidationMessageFor(m => m.Payment, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <br />
+        </fieldset>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-block btn-success">Submit</button>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,94 @@
+﻿@model RentalOffice.Model.UserViewModel
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<header class="container">
+    <h1 class="text-center">Изменить данные пользователя</h1>
+</header>
+<section class="container">
+    @using (Html.BeginForm("Update", "User", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UserId)
+        <hr />
+        <fieldset>
+            <legend class="col-sm-12">Информация о пользователе</legend>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Name, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Name, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        <!--<input type="text" class="form-control" id="name" placeholder="Имя" required>-->
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Surname, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Surname, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                        <!--<input type="text" class="form-control" id="surname" placeholder="Фамилия" required>-->
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Login, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Login, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Login, "", new { @class = "text-danger" })
+                    </div>
+                    <!--<input type="text" class="form-control" id="login" placeholder="Логин" required>-->
+                </div>
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <!--<input type="email" class="form-control" id="email" placeholder="Электронная почта" required>-->
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Password, "", new { @class = "form-control", @type = "password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <!--<input type="password" class="form-control" id="password1" placeholder="Пароль" required>-->
+                </div>
+
+                <!--<label class="control-label col-sm-2" for="birth">Дата рождения:</label>-->
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Phone, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Phone, "", new { @class = "form-control", @type = "phone" })
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                    </div>
+                    <!--<input type="date" class="form-control" id="birth" name="birth">-->
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(m => m.Role, new { @class = "col-md-4 control-label" })
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(m => m.Role, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Role, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </fieldset>        
+        <button class="btn btn-primary btn-lg center-block" type="submit">Подтвердить изменения</button>
+
+    }
+</section>
+
+
+

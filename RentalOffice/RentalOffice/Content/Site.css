@@ -1,0 +1,110 @@
+﻿body {
+    font-size: 1.85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    background-image: url( ../Image/777.jpg); 
+    background-repeat: repeat;      
+}
+/*#admin {
+    background-image: url( ../Image/444.jpg); 
+    background-repeat: repeat;    
+}*/
+#nav {
+    color: black;
+    background-color:  #bbddff;
+}
+.jumbotron{   
+    height: 450px;
+    background-image: url( ../Image/12028.jpg);
+    background-repeat: no-repeat; 
+}
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    height: 350px;
+    margin: auto;
+}
+.blurb{
+    height: 175px;
+    border: 1px solid #ddd;
+    background-color: beige; 
+    padding: 20px;   
+}
+
+
+.panel {
+    font-size: 0.8em; 
+}
+.navbar{
+    background-color: #072E41;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+nav{
+    background-color: #072E41;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend, label, h4 {
+     font-weight: bold;
+}
+
+legend {
+    font-size: 1.2em;   
+}
+
+label, th {
+    font-size: 0.8em;   
+}
+
+td {
+    font-size: 0.6em; 
+}
+table {
+    border: 1px solid gray;
+}
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+    
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}

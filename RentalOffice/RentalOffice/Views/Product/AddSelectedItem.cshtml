@@ -1,0 +1,39 @@
+﻿@model IEnumerable<RentalOffice.Model.SelectedItemShowModel>
+
+@{
+    ViewBag.Title = "AddSelectedItem";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+<h2 class="sub-header">Выбранные фильмы</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Залоговая сумма</th>
+                <th>Стоимость проката</th>                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.ProductName
+                    </td>
+                    <td>
+                        @item.Pledge
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        @Html.ActionLink("Удалить", "#", "Product", new { product_id = item.ProductId, user_id = item.UserId  }, new { @class = "btn btn-primary" })
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

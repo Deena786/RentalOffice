@@ -1,0 +1,56 @@
+﻿@model IEnumerable<RentalOffice.Model.SelectedItemShowModel>
+
+@{
+    ViewBag.Title = "ShowSelectedItem";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+<div class="row">
+    <h2 class="sub-header">Моя корзина</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Залоговая сумма</th>
+                    <th>Стоимость проката</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.ProductName
+                        </td>
+                        <td>
+                            @item.Pledge
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @Html.ActionLink("Удалить", "DeleteSelectedItem", "SelectedItem", new { id = item.SelectedItemId }, new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        @Html.ActionLink("Вернуться в каталог", "ListForUser", "Product", null, new { @class = "btn btn-primary" })        
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        @Html.ActionLink("Заказать", "CreateOrderByUser", "Order", new { id = Model.First().UserId }, new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+﻿@model IEnumerable< RentalOffice.Model.ProductViewModel>
+
+@{  
+    ViewBag.Title = "Product list";  
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<div class="row">
+    <div class="col-lg-9  col-sm-9 col-md-9">
+        <h2 class="sub-header">Список фильмов</h2>
+    </div>
+    <div class="col-lg-3  col-sm-3 col-md-3">
+        <br />
+        @Html.ActionLink("Добавить новый продукт", "Create", "Product", new { @class = "btn btn-primary" })
+    </div>        
+</div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Залоговая сумма</th>
+                <th>Закупочная стоимость</th>
+                <th>Категория</th>
+                <th>Краткое описание</th>
+                <th>Год выхода</th>
+                <th>Киностудия(страна)</th>
+                <th>Режисер</th>
+                <th>В ролях</th>
+                <th>Качество</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>
+                        @product.Name
+                    </td>
+                    <td>
+                        @product.Pledge
+                    </td>
+                    <td>
+                        @product.Price
+                    </td>
+                    <td>
+                        @product.Category
+                    </td>
+                    <td>
+                        @product.Description
+                    </td>
+                    <td>
+                        @product.Released
+                    </td>
+                    <td>
+                        @product.Made
+                    </td>
+                    <td>
+                        @product.Producer
+                    </td>
+                    <td>
+                        @product.FilmStars
+                    </td>
+                    <td>
+                        @product.Quality
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Изменить", "Update", new { id = product.ProductId }, new { @class = "btn btn-primary" })
+                    </td>                  
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>    
+    <div class="row">
+        <ul class="pagination">
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+        </ul>
+    </div>
+    
+    

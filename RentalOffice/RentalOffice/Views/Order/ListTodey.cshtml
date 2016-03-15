@@ -1,0 +1,82 @@
+﻿@model IEnumerable<RentalOffice.Model.OrderViewModel>
+
+@{
+    ViewBag.Title = "ListTodey";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4  col-md-4 ">
+        <br />
+        @Html.ActionLink("Добавить новый заказ", "CreateOrder", "Order", new { @class = "btn btn-primary" })
+        <br />
+    </div>
+    <div class="col-sm-4  col-md-4 ">
+        <br />
+        @Html.ActionLink(" Список всех заказов", "List", "Order", new { @class = "btn btn-primary" })
+        <br />
+    </div>
+    <div class="col-sm-4  col-md-4 ">
+        <br />
+        @Html.ActionLink("Просроченные заказы", "List", "Order", new { @class = "btn btn-primary" })
+        <br />
+    </div>
+</div>
+<div class="row">
+    <h2 class="sub-header">Заказы, поступившие сегодня</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Заказчик</th>
+                    <th>Контакты</th>
+                    <th>Фильмы</th>
+                    <th>Дата заказа</th>
+                    <th>Дата доставки</th>
+                    <th>Адрес доставки</th>
+                    <th>Дата возврата</th>
+                    <th>Стоимость проката</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>
+                            @order.UserName
+                        </td>
+                        <td>
+                            @order.Email
+                            <br />
+                            @order.Phone
+                        </td>
+                        <td>
+                            @order.OrderItems.ToList()
+                        </td>
+                        <td>
+                            @order.OrderDate
+                        </td>
+                        <td>
+                            @order.DeliveryDate
+                        </td>
+                        <td>
+                            @order.AddressId
+                        </td>
+                        <td>
+                            @order.ReturnDate
+                        </td>
+                        <td>
+                            @order.Payment
+                        </td>
+                        <td>
+                            @Html.ActionLink("Изменить", "Update", new { id = order.OrderId }, new { @class = "btn btn-primary" })
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable< RentalOffice.Model.UserViewModel>
+
+@{
+    ViewBag.Title = "User List";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2 class="sub-header">Список пользователей</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Фамилия, имя</th>
+                <th>Логин</th>
+                <th>Электронная почта</th>
+                <th>Контактный телефон</th>
+                <th>Роль</th>                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>
+                        @user.Name 
+                        @user.Surname
+                    </td>
+                    <td>
+                        @user.Login
+                    </td>
+                    <td>
+                        @user.Email
+                    </td>
+                    <td>
+                        @user.Phone
+                    </td>
+                    <td>
+                        @user.Role.ToString()
+                    </td>                   
+                    <td>
+                        @Html.ActionLink("Изменить", "Update", new { id = user.UserId }, new { @class = "btn btn-primary" })
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@Html.ActionLink("Добавить нового пользователя", "Create", "User", new { @class = "btn btn-primary" })
+
+

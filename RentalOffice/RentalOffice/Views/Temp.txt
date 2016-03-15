@@ -1,0 +1,69 @@
+﻿<fieldset>
+            <legend>Доставка</legend>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    @Html.LabelFor(model => model.UserName, new { @class = "col-md-4 control-label" })
+                    @Html.TextBoxFor(model => model.UserName, "", new { @class = "col-sm-8 form-control" })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    <label>Выбирите способ доставки</label>
+                    <select class="form-control" id="state" name="state" required>
+                        <option value="_none">Курьером по адресу</option>
+                        <option value="value1">Самовывоз</option>
+                    </select>
+                    <label>Выбирите дату доставки</label>
+                    <input type="date" class="form-control" id="zip" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <hr />
+                <fieldset>
+                    <legend>Адрес</legend>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="city" placeholder="Город" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="zip" placeholder="Индекс">
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="col-sm-5">
+                            <select class="form-control" id="state" name="state">
+                                <option value="_none">Область</option>
+                                <option value="value1">Винницкая</option>
+                                <option value="value2">Днепропетровская</option>
+                                <option value="value3">Донецкая</option>
+                                <option value="value4">Житомирская</option>
+                                <option value="value5">Закарпатская</option>
+                                <option value="value6">Запорожская</option>
+                                <option value="value7">Ивано-Франковская</option>
+                                <option value="value8">Киевская</option>
+                                <option value="value9">Кировоградская</option>
+                                <option value="value10">Луганская</option>
+                                <option value="value11">Львовская</option>
+                                <option value="value12">Николаевская</option>
+                                <option value="value13">Одесская</option>
+                                <option value="value14">Полтавская</option>
+                                <option value="value15">Ровенская</option>
+                                <option value="value16">Сумская</option>
+                                <option value="value17">Тернопольская</option>
+                                <option value="value18">Харьковская</option>
+                                <option value="value19">Херсонская</option>
+                                <option value="value20">Хмельницкая</option>
+                                <option value="value21">Черкасская</option>
+                                <option value="value22">Черниговская</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="street" placeholder="Улица">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="building" placeholder="Дом">
+                        </div>
+                    </div>
+                </fieldset>
+                <hr />
+        </fieldset>

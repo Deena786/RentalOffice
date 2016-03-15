@@ -1,0 +1,69 @@
+﻿@model IEnumerable<RentalOffice.Model.ProductViewModel>
+
+@{
+    ViewBag.Title = "ListForUser";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+
+<div class="row">
+    <h2 class="sub-header">Список фильмов</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Залоговая сумма</th>
+                    <th>Категория</th>
+                    <th>Краткое описание</th>
+                    <th>Год выхода</th>
+                    <th>Киностудия(страна)</th>
+                    <th>Режисер</th>
+                    <th>В ролях</th>
+                    <th>Качество</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>
+                            @product.Name
+                        </td>
+                        <td>
+                            @product.Pledge
+                        </td>
+                        <td>
+                            @product.Category
+                        </td>
+                        <td>
+                            @product.Description
+                        </td>
+                        <td>
+                            @product.Released
+                        </td>
+                        <td>
+                            @product.Made
+                        </td>
+                        <td>
+                            @product.Producer
+                        </td>
+                        <td>
+                            @product.FilmStars
+                        </td>
+                        <td>
+                            @product.Quality
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("В корзину", "AddSelectedItem", "SelectedItem", new { id = product.ProductId }, new { @class = "btn btn-primary" })
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

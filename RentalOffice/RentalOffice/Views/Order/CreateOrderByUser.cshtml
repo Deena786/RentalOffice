@@ -1,0 +1,186 @@
+﻿@model RentalOffice.Model.OrderViewModel
+
+@{
+    ViewBag.Title = "Заказ";
+    Layout = "~/Views/Shared/_Layout_User.cshtml";
+}
+
+<header class="container">
+    <h1 class="text-center">Оформление заказа</h1>
+    <hr />
+</header>
+<section class="container">
+
+    <h3>Заказчик:   @Html.DisplayFor(model => model.UserName) </h3>
+    <span>Дата заказа:  @Html.DisplayFor(model => model.OrderDate)</span>
+    <hr />
+    @using (Html.BeginForm("CreateOrderByUser", "Order", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })  
+        <fieldset>
+            <legend>Заказ:</legend>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Залоговая сумма</th>
+                            <th>Стоимость проката</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.OrderItems.Count; i++)
+                        {
+                            <tr>
+                                @Html.HiddenFor(model => model.OrderItems[i].ProductId)
+                                <td>
+                                    @Html.HiddenFor(model => model.OrderItems[i].ProductName)
+                                    @Html.DisplayFor(model => model.OrderItems[i].ProductName)
+                                </td>
+                                <td>
+                                    @Html.HiddenFor(model => model.OrderItems[i].Pledge)
+                                    @Html.DisplayFor(model => model.OrderItems[i].Pledge)
+                                </td>
+                                <td>
+                                    @Html.HiddenFor(model => model.OrderItems[i].Price)
+                                    @Html.DisplayFor(model => model.OrderItems[i].Price)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Phone, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Phone, "", new { @class = "form-control", placeholder = "000-000-00-00" })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Email, "", new { @class = "form-control", placeholder = "email@email.com" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.DeliveryDate, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.DeliveryDate, "", new { @class = "form-control", @type = "date" })
+                        @Html.ValidationMessageFor(model => model.DeliveryDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ReturnDate, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.ReturnDate, "", new { @class = "form-control", @type = "date" })
+                        @Html.ValidationMessageFor(model => model.ReturnDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+            <legend>Адресс:</legend>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Address.Region, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Address.Region, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Address.Region, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Address.Postcode, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Address.Postcode, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Address.Postcode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Address.City, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Address.City, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Address.City, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Address.Street, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Address.Street, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Address.Street, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Address.Building, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Address.Building, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Address.Building, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Address.Apartment, new { @class = "control-label" })
+                    </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.Address.Apartment, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Address.Apartment, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <hr />
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <input class="btn btn-primary" type="submit" value="Подтвердить заказ" />
+
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                @Html.ActionLink("Отменить заказ", "#", "#", new { }, new { @class = "btn btn-primary" })
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                @Html.ActionLink("<< Вернуться", "ShowSelectedItem", "SelectedItem", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    }    
+</section>
+

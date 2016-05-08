@@ -36,6 +36,7 @@ namespace RentalOffice.Controllers
         public ViewResult Create()
         {
             var model = new UserViewModel();
+            
             return View();
         }
 
